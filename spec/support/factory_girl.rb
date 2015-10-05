@@ -7,4 +7,10 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :meetup do
+    title "The name of the meetup, man."
+    description "Let's see if we can get Dominos to deliver to another Dominos!"
+    user
+    datetime DateTime.now
+  end
 end

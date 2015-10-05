@@ -1,5 +1,5 @@
-<ul>
+<ul class="wtf mate">
   <% @meetups.each do |meetup| %>
-    <li> <%= link_to meetup.location_name, meetup_path(meetup)%></li>
+    <li> <%= link_to meetup.title, meetup_path(meetup)%></li>
   <% end %>
 </ul>
