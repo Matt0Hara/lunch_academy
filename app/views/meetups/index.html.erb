@@ -1,0 +1,5 @@
+<ul>
+  <% @meetups.each do |meetup| %>
+    <li> <%= link_to meetup.location_name, meetup_path(meetup)%></li>
+  <% end %>
+</ul>
