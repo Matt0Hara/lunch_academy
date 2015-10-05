@@ -1,5 +1,7 @@
-<ul class="wtf mate">
-  <% @meetups.each do |meetup| %>
-    <li> <%= link_to meetup.title, meetup_path(meetup)%></li>
-  <% end %>
-</ul>
+<div id="meetups">
+  <%= render @meetups %>
+</div>
+
+<div id="paginatior">
+  <%= paginate @meetups %>
+</div>
