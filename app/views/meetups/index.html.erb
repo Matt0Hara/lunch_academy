@@ -1,7 +1,8 @@
+<h1 class="text-center">Lunch_Academy</h1>
+
 <div id="meetups">
   <%= render @meetups %>
 </div>
 
-<div id="paginatior">
-  <%= paginate @meetups %>
-</div>
+
+<%= paginate @meetups, remote: true %>
