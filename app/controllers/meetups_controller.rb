@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
   def index
-      @meetups = Meetup.order(created_at: :desc).page(params[:page])
+    @meetups = Meetup.order(created_at: :desc).page(params[:page])
   end
 
   def show

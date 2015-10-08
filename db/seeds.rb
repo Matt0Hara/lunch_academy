@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'securerandom'
+require "securerandom"
 User.create(email:"#{SecureRandom.hex(4)} + @ + #{SecureRandom.hex(5)} + .com", password:"password123")
 
 75.times do
