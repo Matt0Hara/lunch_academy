@@ -17,7 +17,7 @@ feature 'user views the home page', %{
     end
 
     scenario 'authorized user views a list of posts' do
-      user_1 = FactoryGirl.create(:user)
+      
       meetup_1 = FactoryGirl.create(:meetup)
       meetup_2 = FactoryGirl.create(:meetup)
       meetup_3 = FactoryGirl.create(:meetup)
@@ -28,5 +28,8 @@ feature 'user views the home page', %{
       expect(page).to have_content(meetup_3.title)
     end
 
+    scenario 'user uses infinite scroll' do
+
+    end
 
 end

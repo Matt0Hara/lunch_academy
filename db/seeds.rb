@@ -13,6 +13,6 @@ User.create(email:"user@user.com", password:"password123")
     title: "#{SecureRandom.hex(2)}",
     datetime: DateTime.now,
     user_id: 1,
-    description: SecureRandom.hex(32)
+    description: "Ugh I CANNOT believe that I couldn't generate this dynamically. Not only will I despise typing this, but every reload of my page will be a grim reminder of my shortcomings."
   )
 end

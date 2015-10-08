@@ -1,10 +1,19 @@
-<div class="panel small-7 small-offset-3">
-  <div class="meetup" id="<%= meetup.id %>">
-    <div class="small-3 columns">
-      <%= meetup.title %>
-    </div>
-    <div class="small-3 columns end">
-      <%= meetup.description %>
-    </div>
+
+<!-- <div class="panel"> -->
+  <div class="meetup row" id="<%= meetup.id %>" data-equalizer>
+
+
+
+      <div class="small-5 columns lefty text-center" data-equalizer>
+        <p><%= meetup.title %></p>
+        <p><%= meetup.user.email %></p>
+      </div>
+
+      <div class="small-6 columns righty text-center" data-equalizer>
+        <%= meetup.description %>
+      </div>
+
+
+
   </div>
-</div>
+<!-- </div> -->

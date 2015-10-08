@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>LunchAcademy</title>
-  <meta name="viewport" content="width=device-width, maximum-scale = 1.0" />
+  <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
@@ -32,8 +32,9 @@
       <%= value %>
     </div>
   <%- end -%>
-
+<div class="container">
   <%= yield %>
+</div>
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
