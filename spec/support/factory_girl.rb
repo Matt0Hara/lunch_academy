@@ -8,7 +8,7 @@ FactoryGirl.define do
   end
 
   factory :meetup do
-    title "The name of the meetup, man."
+    sequence(:title) { |n| "This is meetup number #{n}." }
     description "Let's see if we can get Dominos to deliver to another Dominos!"
     user
     datetime DateTime.now

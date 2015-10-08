@@ -5,6 +5,10 @@ feature 'user views the home page', %{
   I want to view a list of meetup posts
   so I can meetup with other users
   } do
+
+    before :each do
+      user = FactoryGirl.create(:user)
+    end
     scenario 'unauthorized user views a list of posts' do
       meetup_1 = FactoryGirl.create(:meetup)
       meetup_2 = FactoryGirl.create(:meetup)
@@ -17,7 +21,7 @@ feature 'user views the home page', %{
     end
 
     scenario 'authorized user views a list of posts' do
-      
+
       meetup_1 = FactoryGirl.create(:meetup)
       meetup_2 = FactoryGirl.create(:meetup)
       meetup_3 = FactoryGirl.create(:meetup)
@@ -28,8 +32,18 @@ feature 'user views the home page', %{
       expect(page).to have_content(meetup_3.title)
     end
 
-    scenario 'user uses infinite scroll' do
+    scenario 'user uses infinite scroll', :js => true do
+      target_meetup = FactoryGirl.create(:meetup)
+      20.times do
+        FactoryGirl.create(:meetup)
+      end
 
+
+      visit meetups_path
+      expect(page).to_not have_content(target_meetup.title)
+      save_screenshot("public/uploads/capybara-js.png")
+      page.execute_script('window.scrollTo(0, 10000)')
+      expect(page).to have_content(target_meetup.title)
     end
 
 end
