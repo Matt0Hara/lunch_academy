@@ -17,4 +17,41 @@ $(document).ready(function() {
       page++;
     }
   });
+
+
+  $.zoomooz.setup({nativeanimation:true, debug:false});
+
+  //   $(".cover").click(function(evt) {
+  //   evt.stopPropagation();
+  //   this.fadeTo()
+  // });
+
+  // $(".box").click(function(evt) {
+  //   evt.stopPropagation();
+  //   $(this).zoomTo({targetsize:0.7});
+  // });
+
+
+
+  $(".face").click(function(evt) {
+    evt.stopPropagation();
+    $(".cover").hide();
+    $(this).zoomTo();
+  });
+
+  $(window).click(function(evt) {
+    evt.stopPropagation();
+    $("body").zoomTo({targetsize:1.0});
+    $(".cover").show();
+  });
+
+  // for iPhone
+  $("#cubeContainer").click(function(evt) {
+    evt.stopPropagation();
+    $("body").zoomTo({targetsize:1.0});
+    $(".cover").show();
+  });
+
+  $("body").zoomTo({targetsize:1.0});
+  $(".cover").show();
 });

@@ -8,34 +8,47 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">LunchAcademy</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
     </div>
   <%- end -%>
+
+
+    <div id="cubeContainer">
+      <div id="cube">
+        <div class="face" id="f1">
+          <%= form_for :new, url: meetups_path  do |f| %>
+            <%= f.text_field :title, placeholder:"Meetup Title" %>
+            <%= f.text_area :description, placeholder:"Description"  %>
+            <%= f.text_field :datetime, placeholder:"Time" %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+		    <div class="face" id="f2">
+          <% if current_user %>
+            <%= render partial: "devise/sessions/current" %>
+          <% else %>
+          <%= render partial: "devise/sessions/new" %>
+          <% end %>
+	      </div>
+		    <div class="face" id="f3">
+          <label for="search"><h5>Search</h5></label>
+          <input type="text" name="search"></input>
+          <input type="submit"></input>
+        </div>
+	    </div>
+		</div>
+
+    <div class="text-center"><%= link_to "Home", meetups_path%></div>
+    <div class="text-center"><%= link_to 'Sign Out', destroy_user_session_path,
+                                 method: :delete %></div>
+
+
 <div class="container">
   <%= yield %>
 </div>
-
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 </body>

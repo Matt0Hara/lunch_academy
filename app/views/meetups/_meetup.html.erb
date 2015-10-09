@@ -5,8 +5,9 @@
 
 
       <div class="small-5 columns lefty text-center" data-equalizer>
-        <p><%= meetup.title %></p>
-        <p><%= meetup.user.email %></p>
+        <p> <%= meetup.title %> </p>
+        <p>Hosted by: <%= meetup.user.email %> </p>
+        <p>At: <%= meetup.datetime %> </p>
       </div>
 
       <div class="small-6 columns righty text-center" data-equalizer>

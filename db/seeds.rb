@@ -5,18 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require "securerandom"
-User.create(email:"#{SecureRandom.hex(4)} + @ + #{SecureRandom.hex(5)} + .com",
+User.create(email:"user@user.com",
             password:"password123")
 
-75.times do
+(1..75).to_a.each do |i|
   Meetup.create(
-    title: "#{SecureRandom.hex(2)}",
+    title: "This, right here, is meetup number: #{i}",
     datetime: DateTime.now,
     user_id: 1,
-    description: "Ugh I CANNOT believe that I couldn't generate this
-                  dynamically. Not only will I despise typing this, but every
-                  reload of my page will be a grim reminder of my
-                  shortcomings."
+    description: "This is a sample meetup. A billionaire crimefighting
+                  veterenarian wants to get lunch at your favorite restaurant!
+                  He/she is going to Mars tomorrow, so you should request to
+                  join them!"
   )
 end
