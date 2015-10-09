@@ -22,8 +22,8 @@ class MeetupsController < ApplicationController
   private
 
   def meetup_params
-    #change new to :meetup
+    # change new to :meetup
     params.require(:new).permit(:title, :description, :user_id,
-                                      :datetime)
+                                :datetime)
   end
 end

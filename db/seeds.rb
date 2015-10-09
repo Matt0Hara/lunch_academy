@@ -5,13 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(email:"user@user.com",
-            password:"password123")
+User.create(email: "user@user.com",
+            password: "password123")
 
 (1..75).to_a.each do |i|
   Meetup.create(
     title: "This, right here, is meetup number: #{i}",
-    datetime: DateTime.now,
+    datetime: DateTime.now.to_i,
     user_id: 1,
     description: "This is a sample meetup. A billionaire crimefighting
                   veterenarian wants to get lunch at your favorite restaurant!

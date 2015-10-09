@@ -3,7 +3,7 @@ $(document).ready(function() {
   var page = 2;
   $(window).scroll(function() {
     var ratio = $(document).height()/$(document).width();
-    pageHeight = 0
+    var pageHeight = 0
     if (ratio > 1) {
       pageHeight = $(document).height() - 600;
     }
