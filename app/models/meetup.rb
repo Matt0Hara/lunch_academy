@@ -1,5 +1,5 @@
 class Meetup < ActiveRecord::Base
-  validates :location_name, presence: true
-  validates :location_address, presence: true
+  paginates_per 20
+  belongs_to :user
   validates :user_id, presence: true
 end

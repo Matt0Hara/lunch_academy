@@ -1,5 +1,10 @@
-<ul>
-  <% @meetups.each do |meetup| %>
-    <li> <%= link_to meetup.location_name, meetup_path(meetup)%></li>
-  <% end %>
-</ul>
+<div class="row">
+  <h1 class="text-center">Lunch_Academy</h1>
+</div>
+
+<div id="meetups">
+  <%= render @meetups %>
+</div>
+
+
+<%= paginate @meetups, remote: true %>
