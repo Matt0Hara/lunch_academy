@@ -34,14 +34,12 @@ $(document).ready(function() {
 
 
   $(".face").click(function(evt) {
-    if(evt.toElement.className == "signOutButton") {
-    }
-    else {
+    if(evt.toElement.className != "signOutButton") {
+      $("body")
       evt.stopPropagation();
       $(".cover").hide();
       $(this).zoomTo();
     }
-
   });
 
   $(window).click(function(evt) {
@@ -52,9 +50,7 @@ $(document).ready(function() {
 
   // for iPhone
   $("#cubeContainer").click(function(evt) {
-    if(evt.toElement.className == "signOutButton") {
-    }
-    else {
+    if(evt.toElement.className != "signOutButton") {
       evt.stopPropagation();
       $("body").zoomTo({targetsize:1.0});
       $(".cover").show();

@@ -5,7 +5,6 @@ feature "Attend a posted meetup", %{
   I want to attend a Meetup
   So that I can meetup with people
   } do
-
   scenario "authenicated user attends a meetup" do
     FactoryGirl.create(:user)
     meetup_attendee = FactoryGirl.create(:user)
