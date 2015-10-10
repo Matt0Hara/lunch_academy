@@ -11,7 +11,7 @@ User.create(email: "user@user.com",
 (1..75).to_a.each do |i|
   Meetup.create(
     title: "This, right here, is meetup number: #{i}",
-    datetime: DateTime.now.to_i,
+    datetime: "11:00",
     user_id: 1,
     description: "This is a sample meetup. A billionaire crimefighting
                   veterenarian wants to get lunch at your favorite restaurant!

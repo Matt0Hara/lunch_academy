@@ -4,9 +4,10 @@
   <title>LunchAcademy</title>
   <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
 </head>
-<body>
+<body data-no-turbolink="true">
 
 
   <%- flash.each do |key, value| -%>
@@ -14,7 +15,6 @@
       <%= value %>
     </div>
   <%- end -%>
-
 
     <div id="cubeContainer">
       <div id="cube">
@@ -28,7 +28,10 @@
         </div>
 		    <div class="face" id="f2">
           <% if current_user %>
-            <%= render partial: "devise/sessions/current" %>
+            <div class="text-center">
+              <%= link_to 'Sign Out', destroy_user_session_path,
+                  method: :delete, class: "signOutButton"  %>
+            </div>
           <% else %>
           <%= render partial: "devise/sessions/new" %>
           <% end %>
@@ -42,8 +45,6 @@
 		</div>
 
     <div class="text-center"><%= link_to "Home", meetups_path%></div>
-    <div class="text-center"><%= link_to 'Sign Out', destroy_user_session_path,
-                                 method: :delete %></div>
 
 
 <div class="container">

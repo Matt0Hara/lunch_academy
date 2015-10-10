@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :meetups, only: [:new, :create]
   end
-  resources :meetups, only: [:index, :show]
+  resources :meetups, only: [:index, :show] do
+    resources :attendees, only: [:create, :show, :destroy]
+  end
 
-  resources :users, only: :show
+  resources :user, only: :show
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
