@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'user signs in', %Q{
+feature "user signs in", %Q{
   As a signed up user
   I want to sign in
   So that I can regain access to my account
@@ -22,7 +22,7 @@ feature 'user signs in', %Q{
   scenario "specify invalid credentials" do
     visit new_user_session_path
 
-    click_button 'Sign in'
+    click_button "Sign in"
     expect(page).to have_content("Invalid email or password")
     expect(page).to_not have_content("Sign Out")
   end
