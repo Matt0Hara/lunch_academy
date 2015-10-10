@@ -34,9 +34,12 @@ $(document).ready(function() {
 
 
   $(".face").click(function(evt) {
-    evt.stopPropagation();
-    $(".cover").hide();
-    $(this).zoomTo();
+    if(evt.toElement.className != "signOutButton") {
+      $("body")
+      evt.stopPropagation();
+      $(".cover").hide();
+      $(this).zoomTo();
+    }
   });
 
   $(window).click(function(evt) {
@@ -47,9 +50,11 @@ $(document).ready(function() {
 
   // for iPhone
   $("#cubeContainer").click(function(evt) {
-    evt.stopPropagation();
-    $("body").zoomTo({targetsize:1.0});
-    $(".cover").show();
+    if(evt.toElement.className != "signOutButton") {
+      evt.stopPropagation();
+      $("body").zoomTo({targetsize:1.0});
+      $(".cover").show();
+    }
   });
 
   $("body").zoomTo({targetsize:1.0});

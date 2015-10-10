@@ -8,9 +8,16 @@
         <p> <%= meetup.title %> </p>
         <p>Hosted by: <%= meetup.user.email %> </p>
         <p>At: <%= meetup.datetime %> </p>
+        <div class="joinLink">
+          <% if Attendee.find_by(meetup_id:meetup.id, user_id:current_user).nil? %>
+            <%=button_to "Join Meetup!", meetup_attendees_path(meetup), method: :post %>
+          <% else %>
+          <%= button_to "Leave meetup", meetup_attendee_path(meetup.id, meetup), method: :delete %>
+          <% end %>
+        </div>
       </div>
 
-      <div class="small-6 columns righty text-center" data-equalizer>
+      <div class="small-6 columns righty text-center desc" data-equalizer>
         <%= meetup.description %>
       </div>
 

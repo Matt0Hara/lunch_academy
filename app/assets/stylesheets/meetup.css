@@ -27,6 +27,9 @@
 
 .meetup div {
   height: 300px;
+}
+
+.meetup #desc {
   overflow:auto;
 }
 
