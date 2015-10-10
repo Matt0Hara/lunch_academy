@@ -15,11 +15,11 @@ feature 'user registers', %Q{
   scenario "provide valid registration information" do
     visit meetups_path
     click_link "Sign up"
-
-    fill_in "Email", with: "john@example.com"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
-
+    within(".container") do
+      fill_in "Email", with: "john@example.com"
+      fill_in "Password", with: "password"
+      fill_in "Password confirmation", with: "password"
+    end
     click_button "Sign up"
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
