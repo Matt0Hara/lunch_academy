@@ -14,8 +14,7 @@ feature "Attend a posted meetup", %{
     fill_in "Password", with: meetup_attendee.password
     click_button "Sign in"
     click_button "Join Meetup!"
-    # handle changing the Join Meetup! button with ajax, as well as the request
-    expect(page).to have_button("Leave meetup")
+    expect(page).to have_button("Leave Meetup")
   end
 
   scenario "authenticated user leaves a meetup they are attending" do
@@ -26,12 +25,18 @@ feature "Attend a posted meetup", %{
     fill_in "Email", with: meetup_attendee.email
     fill_in "Password", with: meetup_attendee.password
     click_button "Sign in"
+    click_button "Join Meetup!"
+    expect(page).to have_button("Leave Meetup")
+    click_button "Leave Meetup"
+    expect(page).to_not have_button("Leave Meetup")
+  end
+
+  scenario "unauthenticated user tries to join a meetup" do
+    meetup = FactoryGirl.create(:meetup)
+    visit meetups_path
     within("##{meetup.id}") do
-      click_button "Join Meetup!"
+      click_button("Join Meetup!")
     end
-    # handle changing the Join Meetup! button with ajax, as well as the request
-    expect(page).to have_button("Leave meetup")
-    click_button("Leave meetup")
-    expect(page).to_not have_button("Leave meetup")
+    expect(page).to have_content("You need to sign in to do that!")
   end
 end

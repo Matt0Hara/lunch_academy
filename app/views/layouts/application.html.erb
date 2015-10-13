@@ -6,39 +6,53 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+  <% if flash[:errors] == "You need to sign in to do that!" %>
+    <script>
+      window.onload = function(){
+        $("#f2").zoomTo();
+      }
+    </script>
+
+  <% end %>
 </head>
 <body data-no-turbolink="true">
 
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
+  <%- unless flash[:errors] == "You need to sign in to do that!" -%>
+    <%- flash.each do |key, value| -%>
+      <div class="flash flash-<%= key %>">
+        <%= value %>
+      </div>
+    <%- end -%>
   <%- end -%>
 
     <div id="cubeContainer">
       <div id="cube">
         <div class="face" id="f1">
           <%= form_for :new, url: meetups_path  do |f| %>
-            <%= f.text_field :title, placeholder:"Meetup Title" %>
-            <%= f.text_area :description, placeholder:"Description"  %>
-            <%= f.text_field :datetime, placeholder:"Time" %>
+            <%= f.text_field :title, placeholder:"Title", class: "cubeInput" %>
+            <%= f.text_area :description, placeholder:"Description", class: "cubeInput" %>
+            <%= f.text_field :datetime, placeholder:"Time", class: "cubeInput" %>
             <%= f.submit %>
           <% end %>
         </div>
 		    <div class="face" id="f2">
           <% if current_user %>
             <div class="text-center">
-              <%= link_to 'Sign Out', destroy_user_session_path,
-                  method: :delete, class: "signOutButton"  %>
+              <h5><%= current_user.email %></h5>
+              <%= link_to "Sign Out", destroy_user_session_path,
+                  method: :delete, class: "signOutButton", class: "f2Link" %><br>
+              <%= link_to "Edit Account", user_path(current_user.id), class: "f2Link" %>
             </div>
           <% else %>
           <%= render partial: "devise/sessions/new" %>
+          <% if flash[:errors] == "You need to sign in to do that!" %>
+            <div class="signInFlash text-center"> <%= flash[:errors] %> </div>
+          <% end %>
           <% end %>
 	      </div>
 		    <div class="face" id="f3">
           <label for="search"><h5>Search</h5></label>
-          <input type="text" name="search"></input>
+          <input type="text" name="search" class="cubeInput"></input>
           <input type="submit"></input>
         </div>
 	    </div>

@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
       @devise_mapping ||= Devise.mappings[:user]
     end
   end
+
+  def cube_authentication
+    unless current_user
+      flash[:errors] = "You need to sign in to do that!"
+      redirect_to(meetups_path)
+    end
+  end
 end

@@ -21,7 +21,7 @@ feature "user views the home page", %{
   scenario "user uses infinite scroll", js: true do
     FactoryGirl.create(:user)
     target_meetup = FactoryGirl.create(:meetup)
-    20.times do
+    10.times do
       FactoryGirl.create(:meetup)
     end
     visit meetups_path
