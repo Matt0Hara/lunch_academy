@@ -5,7 +5,6 @@ feature "Deletes a meetup", %{
   I want to delete a meetup
   So that I can avoid people
 } do
-
   scenario "user sees delete button" do
     user = FactoryGirl.create(:user)
     visit meetups_path

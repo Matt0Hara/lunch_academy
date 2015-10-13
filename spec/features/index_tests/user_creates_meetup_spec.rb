@@ -5,7 +5,6 @@ feature "Create meetup", %{
   I want to create a meetup
   so that I can connect with people
 } do
-
   scenario "unauthorized user tries to create a meetup" do
     visit meetups_path
     desc = "Oh yeah, im gonna get some tacos and my
@@ -60,7 +59,8 @@ feature "Create meetup", %{
     fill_in "Time", with: "11:00"
     click_button "Save New"
     expect(page).to_not have_content("hi")
-    expect(page).to have_content("Description is too short (minimum is 20 characters)")
+    expect(page).to have_content("Description is too short
+                                 (minimum is 20 characters)")
   end
 
   scenario "authorized user tries to create a meetup without a description" do
@@ -73,7 +73,8 @@ feature "Create meetup", %{
     fill_in "Time", with: "11:00"
     click_button "Save New"
     expect(page).to_not have_content("Title!")
-    expect(page).to have_content("Description is too short (minimum is 20 characters). Description can't be blank")
+    expect(page).to have_content("Description is too short (minimum is 20
+                                 characters). Description can't be blank")
   end
 
   scenario "authorized user tries to create a meetup without a time" do

@@ -11,9 +11,7 @@ class MeetupsController < ApplicationController
 
   def destroy
     @meetup = Meetup.find(params[:id])
-    @meetup.attendees.each do |attendee|
-      attendee.destroy
-    end
+    @meetup.attendees.each(&:destroy)
     @meetup.destroy
     redirect_to meetups_path
   end

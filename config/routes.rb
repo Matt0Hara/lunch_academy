@@ -2,14 +2,12 @@ Rails.application.routes.draw do
   root 'meetups#index'
   devise_for :users
 
-    resources :meetups, only: [:new, :create, :destroy]
+  resources :meetups, only: [:new, :create, :destroy]
   resources :meetups, only: [:index, :show] do
     resources :attendees, only: [:create, :show, :destroy]
   end
 
   resources :user, only: :show
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
