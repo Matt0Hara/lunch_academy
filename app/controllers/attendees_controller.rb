@@ -1,4 +1,5 @@
 class AttendeesController < ApplicationController
+  before_action :cube_authentication
   def create
     @attendee = Attendee.new(user:current_user, meetup_id: params[:meetup_id])
     @attendee.save!

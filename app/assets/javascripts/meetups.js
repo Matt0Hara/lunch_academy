@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
   $(".face").click(function(evt) {
-    if(evt.toElement.className != "signOutButton") {
+    if(evt.toElement.className != "f2Link") {
       $("body")
       evt.stopPropagation();
       $(".cover").hide();
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
   // for iPhone
   $("#cubeContainer").click(function(evt) {
-    if(evt.toElement.className != "signOutButton") {
+    if(evt.toElement.className != "f2Link") {
       evt.stopPropagation();
       $("body").zoomTo({targetsize:1.0});
       $(".cover").show();

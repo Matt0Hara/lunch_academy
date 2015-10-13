@@ -2,6 +2,11 @@
   overflow:hidden;
 }*/
 
+.face .cubeInput {
+  margin:0px;
+  resize: none;
+}
+
 .lefty {
   background-color: rgba(40, 0, 0, 0.3);;
   margin-left: 4%;
@@ -17,6 +22,10 @@
   margin-left: 4%;
 }
 
+.desc ul{
+  list-style-type: none;
+}
+
 @media only screen and (max-width: 320px) {
 
    body { font-size: 12pt; width:100%; overflow-x: hidden; }
@@ -29,7 +38,7 @@
   height: 300px;
 }
 
-.meetup #desc {
+.meetup .desc {
   overflow:auto;
 }
 
@@ -52,7 +61,7 @@ body h1 {
     width:200px;
     height:200px;
     border:1px solid white;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .box {
@@ -136,4 +145,15 @@ body {
   position:relative;
   left:50%;
   top:50%;
+}
+
+.signInFlash {
+  font-size: 8pt;
+  color:white;
+  background-color: red;
+}
+
+.joinLink {
+  margin-bottom: 1px;
+  height:20px;
 }

@@ -8,8 +8,11 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require File.join(File.dirname(__FILE__), 'support/valid_attribute')
 require File.join(File.dirname(__FILE__), 'support/factory_girl')
+require File.join(File.dirname(__FILE__), 'support/database_cleaner')
+require 'database_cleaner'
 require 'capybara/rspec'
 require "capybara/poltergeist"
+
 Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!
