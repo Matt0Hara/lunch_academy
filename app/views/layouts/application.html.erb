@@ -41,7 +41,7 @@
               <h5><%= current_user.email %></h5>
               <%= link_to "Sign Out", destroy_user_session_path,
                   method: :delete, class: "signOutButton", class: "f2Link" %><br>
-              <%= link_to "Edit Account", user_path(current_user.id), class: "f2Link" %>
+              <%= link_to "Edit Account", class: "f2Link" %>
             </div>
           <% else %>
           <%= render partial: "devise/sessions/new" %>

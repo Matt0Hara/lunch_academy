@@ -5,10 +5,10 @@ $(document).ready(function() {
     var ratio = $(document).height()/$(document).width();
     var pageHeight = 0
     if (ratio > 1) {
-      pageHeight = $(document).height() - 600;
+      pageHeight = $(document).height() - 310;
     }
     else {
-        pageHeight = $(document).height() - 10;
+        pageHeight = $(document).height() - 310;
       }
     var position = $(window).scrollTop() + $(window).height();
     if(position > pageHeight) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
     if(evt.toElement.className != "f2Link") {
       $("body")
       evt.stopPropagation();
-      $(".cover").hide();
+      // $(".cover").hide();
       $(this).zoomTo();
     }
   });
@@ -45,18 +45,18 @@ $(document).ready(function() {
   $(window).click(function(evt) {
     evt.stopPropagation();
     $("body").zoomTo({targetsize:1.0});
-    $(".cover").show();
+    // $(".cover").show();
   });
 
   // for iPhone
-  $("#cubeContainer").click(function(evt) {
-    if(evt.toElement.className != "f2Link") {
-      evt.stopPropagation();
-      $("body").zoomTo({targetsize:1.0});
-      $(".cover").show();
-    }
-  });
+  // $("#cubeContainer").click(function(evt) {
+  //   if(evt.toElement.className != "f2Link") {
+  //     evt.stopPropagation();
+  //     $("body").zoomTo({targetsize:1.0});
+  //     $(".cover").show();
+  //   }
+  // });
 
   $("body").zoomTo({targetsize:1.0});
-  $(".cover").show();
+  // $(".cover").show();
 });

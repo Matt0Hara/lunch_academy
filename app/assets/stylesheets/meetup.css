@@ -8,7 +8,7 @@
 }
 
 .lefty {
-  background-color: rgba(40, 0, 0, 0.3);;
+  background-color: white;;
   margin-left: 4%;
   margin-right: -250px;
   padding-right: -250px;
@@ -16,7 +16,7 @@
 }
 
 .righty {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: white;
   margin-right: 4%;
   margin-bottom: 10px;
   margin-left: 4%;
@@ -33,8 +33,7 @@
    html { width:100%; overflow-x: hidden; }
 }
 
-
-.meetup div {
+.meetup .righty,.lefty {
   height: 300px;
 }
 
@@ -46,15 +45,52 @@ body h1 {
   font-family: sans-serif;
 }
 
+.commentColor1 {
+  background-color: white;
+  border-style: outset;
+  border-width: 5px;
+  border-color: #32DBD3;
+  word-wrap: break-word;
+  font-size: 5px;
+}
+
+.commentColor2 {
+  background-color: white;
+  border-style: inset;
+  border-width: 5px;
+  border-color: #D9FF00;
+  font-size: 5px;
+}
+
+.meetup .commentForm {
+  height:50px;
+  margin-bottom: 50px;
+}
+
+.commentHeader {
+
+}
+
+.commentDelete {
+  background-color: #a0d3e8;
+}
+
+
 
 /*BEGIN ZOOMOOZ STYLING*/
 #cubeContainer {
 	background-color:white;
 	margin:0;
-    padding:0;
-    width:100%;
-    height:70%;
+  padding:0;
+  width:100%;
+  height:70%;
+  background-color: #D9FF00;
+  border-bottom: solid;
+  border-width: 10px;
+  border-color: #142952;
 }
+
+
 
 .face {
     position:absolute;
@@ -88,6 +124,10 @@ body h1 {
 
 #f3 .box {
     background-color:#fff;
+}
+
+.noScroll {
+  overflow:hidden;
 }
 
 #cube {
@@ -135,6 +175,7 @@ body h1 {
 body {
   width:100%;
   overflow-x: hidden;
+  background-color: #32DBD3;
 }
 
 .face a {

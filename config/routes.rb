@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :meetups, only: [:new, :create, :destroy]
   resources :meetups, only: [:index, :show] do
     resources :attendees, only: [:create, :show, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :user, only: :show
