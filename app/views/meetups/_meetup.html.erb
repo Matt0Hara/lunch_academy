@@ -1,38 +1,51 @@
-
-<!-- <div class="panel"> -->
-  <div class="meetup row" id="<%= meetup.id %>" data-equalizer>
-
-
-
-      <div class="small-5 columns lefty text-center" data-equalizer>
-        <p> <%= meetup.title %> </p>
-        <p>Hosted by: <%= meetup.user.email %> </p>
-        <p>At: <%= meetup.datetime %> </p>
-        <div class="joinLink">
-          <% if meetup.user == current_user %>
-            <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete %>
-          <% else %>
-            <% if Attendee.find_by(meetup_id:meetup.id, user_id:current_user).nil? %>
-              <%=button_to "Join Meetup!", meetup_attendees_path(meetup), method: :post %>
-            <% else %>
-            <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup), method: :delete %>
-            <% end %>
-          <% end %>
-
-        </div>
-      </div>
-
-      <div class="small-6 columns righty text-center desc" data-equalizer>
-        <%= meetup.description %>
-        <hr>
-        <span>People attending this meetup:</span><br>
-        <ul>
-          <% meetup.attendees.each do |attendee| %>
-            <li><%= attendee.user.email %></li>
-          <% end %>
-      </div>
-
-
-
+<div class="meetup row" id="<%= meetup.id %>" data-equalizer>
+  <div class="small-5 columns lefty text-center" data-equalizer>
+    <p> <%= meetup.title %> </p>
+    <p>Hosted by: <%= meetup.user.email %> </p>
+    <p>At: <%= meetup.datetime %> </p>
+    <div class="joinLink">
+      <% if meetup.user == current_user %>
+        <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete %>
+      <% else %>
+        <% if Attendee.find_by(meetup_id: meetup.id, user_id: current_user).nil? %>
+          <%= button_to "Join Meetup!", meetup_attendees_path(meetup), method: :post %>
+        <% else %>
+        <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-<!-- </div> -->
+
+  <div class="small-6 columns righty text-center desc" data-equalizer>
+    <%= meetup.description %>
+    <hr>
+    <span>People attending this meetup:</span><br>
+    <ul>
+      <% meetup.attendees.each do |attendee| %>
+        <li><%= attendee.user.email %></li>
+      <% end %>
+    </ul>
+    <hr>
+    <div class="commentForm">
+      <%= form_for :comment, url: meetup_comments_path(meetup_id: meetup.id) do |f| %>
+        <%= f.text_area :body, placeholder: "Have something to say?" %>
+        <%= f.submit "Comment" %>
+      <% end %>
+    </div>
+    <span class="text-center">click comment to delete</span>
+    <ul class="text-left">
+      <% meetup.comments.each_with_index do |comment, index| %>
+        <li <%= index%2==0 ? "class=commentColor1" : "class=commentColor2" %>>
+        <% if comment.user == current_user %>
+          <a data-method="delete" class="commentDelete" id="commentDelete"
+             href="<%= meetup_comment_path(meetup_id: meetup.id,
+                                           id: comment.id) %>">
+        <% end %>
+            <h5 class="commentHeader"><%= comment.user.email %>:</h5>
+            <p><%= comment.body %></p>
+          </a>
+        </li>
+      <%- end -%>
+    </ul>
+  </div>
+</div>
