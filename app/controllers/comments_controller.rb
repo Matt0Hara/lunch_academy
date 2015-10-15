@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :cube_authentication
   def create
-    @comment = Comment.new(body:comment_body[:body], meetup_id: params[:meetup_id])
+    @comment = Comment.new(body: comment_body[:body], meetup_id: params[:meetup_id])
     @comment.user = current_user
     if @comment.save
       redirect_to meetups_path

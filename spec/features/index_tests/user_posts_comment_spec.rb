@@ -42,5 +42,4 @@ feature "user posts a comment", %{
     click_link("commentDelete")
     expect(page).to_not have_content("Can't wait!")
   end
-
 end
