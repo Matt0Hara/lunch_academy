@@ -1,10 +1,9 @@
 class AttendeesController < ApplicationController
   before_action :cube_authentication
   def create
-    @attendee = Attendee.new(user:current_user, meetup_id: params[:meetup_id])
-    @attendee.save!
-    # respoond_to block, flash success via AJAX, baby
-    redirect_to meetups_path
+      @attendee = Attendee.new(user:current_user, meetup_id: params[:meetup_id])
+      @attendee.save!
+      redirect_to meetups_path
   end
 
   def destroy

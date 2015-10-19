@@ -5,6 +5,7 @@ class CreateMeetups < ActiveRecord::Migration
       t.integer :user_id, null: false
       t.datetime :datetime, null: false
       t.string :description, null: false
+      t.integer :location_id
 
       t.timestamps
     end

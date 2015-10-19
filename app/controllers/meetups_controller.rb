@@ -2,7 +2,18 @@ class MeetupsController < ApplicationController
   helper MeetupHelper
   before_action :cube_authentication, only: [:create, :new]
   def index
-    @meetups = Meetup.order(created_at: :desc).page(params[:page])
+    if params[:search]
+      @meetups = Meetup.where("title = ?", params[:search]).page(params[:page]).per(10)
+    else
+      @meetups = Meetup.order(created_at: :desc).page(params[:page]).per(10)
+    end
+    @addresses = []
+    @meetups.each do |meetup|
+      unless meetup.location.nil?
+        @addresses << meetup.location.address
+      end
+    end
+
   end
 
   def show
@@ -24,12 +35,20 @@ class MeetupsController < ApplicationController
   def create
     @meetup = Meetup.new(meetup_params)
     @meetup.user = current_user
+    @location = Location.new(address: params[:new][:address])
+    if @location.save
+      @meetup.location = @location
+    end
     if @meetup.save
       redirect_to meetups_path
     else
       flash[:errors] = @meetup.errors.full_messages.join(". ")
       redirect_to meetups_path
     end
+  end
+
+  def update
+    binding.pry
   end
 
   private

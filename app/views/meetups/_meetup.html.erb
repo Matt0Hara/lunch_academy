@@ -1,51 +1,59 @@
 <div class="meetup row" id="<%= meetup.id %>" data-equalizer>
-  <div class="small-5 columns lefty text-center" data-equalizer>
-    <p> <%= meetup.title %> </p>
-    <p>Hosted by: <%= meetup.user.email %> </p>
-    <p>At: <%= meetup.datetime %> </p>
+  <div class="small-5 columns lefty" data-equalizer>
+    <h4> <%= meetup.title %> </h4>
+    <p class="textureBorder postInfo"> <%= meetup.user.email %></p>
+    <p>Time: <%= meetup.datetime %></p>
     <div class="joinLink">
       <% if meetup.user == current_user %>
-        <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete %>
+        <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete, class: "button tiny" %>
       <% else %>
         <% if Attendee.find_by(meetup_id: meetup.id, user_id: current_user).nil? %>
-          <%= button_to "Join Meetup!", meetup_attendees_path(meetup), method: :post %>
+          <%= button_to "Join Meetup!", meetup_attendees_path(meetup), class:"button tiny", method: :post %>
         <% else %>
-        <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup), method: :delete %>
+          <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup), class:"button tiny", method: :delete %>
         <% end %>
       <% end %>
     </div>
+
+      <% if meetup.location %>
+        <%= render partial: meetup.location, locals: {meetup_id: meetup.id} %>
+      <% else %>
+        <h6>No location data</h6>
+      <% end %>
+
   </div>
 
-  <div class="small-6 columns righty text-center desc" data-equalizer>
-    <%= meetup.description %>
+  <div class="small-6 columns righty desc" data-equalizer>
+    <div class="meetupDesc">
+      <%= meetup.description %>
+    </div>
     <hr>
-    <span>People attending this meetup:</span><br>
-    <ul>
-      <% meetup.attendees.each do |attendee| %>
-        <li><%= attendee.user.email %></li>
-      <% end %>
-    </ul>
+    <div class="textureBorder">
+        <h4 class="attending text-left">
+          <% if meetup.attendees.empty? %>
+            Nobody's attending this meetup yet!
+          <% else %>
+            People attending this meetup:
+          <% end %>
+          <hr>
+        </h4>
+        <ul>
+        <% meetup.attendees.each do |attendee| %>
+          <li class="attendee"><a><%= attendee.user.email %></a></li>
+        <% end %>
+      </ul>
+    </div
+    <br>
     <hr>
     <div class="commentForm">
-      <%= form_for :comment, url: meetup_comments_path(meetup_id: meetup.id) do |f| %>
-        <%= f.text_area :body, placeholder: "Have something to say?" %>
-        <%= f.submit "Comment" %>
+      <%= form_for :comment, id: "form", url: meetup_comments_path(meetup_id: meetup.id), autocomplete: false do |f| %>
+        <%= f.text_area :body, placeholder: "Have something to say?", class: "textureBorder" %>
+        <%= f.submit "Comment", class:"button tiny commentButton" %>
       <% end %>
     </div>
-    <span class="text-center">click comment to delete</span>
-    <ul class="text-left">
-      <% meetup.comments.each_with_index do |comment, index| %>
-        <li <%= index%2==0 ? "class=commentColor1" : "class=commentColor2" %>>
-        <% if comment.user == current_user %>
-          <a data-method="delete" class="commentDelete" id="commentDelete"
-             href="<%= meetup_comment_path(meetup_id: meetup.id,
-                                           id: comment.id) %>">
-        <% end %>
-            <h5 class="commentHeader"><%= comment.user.email %>:</h5>
-            <p><%= comment.body %></p>
-          </a>
-        </li>
-      <%- end -%>
+    <span class="text-center commentText">click comment to delete</span>
+    <ul class="text-left comments">
+      <%= render partial: meetup.comments.reverse %>
     </ul>
   </div>
 </div>

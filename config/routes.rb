@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root 'meetups#index'
   devise_for :users
 
-  resources :meetups, only: [:new, :create, :destroy]
+  resources :meetups, only: [:new, :create, :destroy, :update]
   resources :meetups, only: [:index, :show] do
     resources :attendees, only: [:create, :show, :destroy]
     resources :comments, only: [:create, :destroy]
+    resources :locations, only: [:create, :destroy]
   end
 
   resources :user, only: :show

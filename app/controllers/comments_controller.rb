@@ -1,19 +1,37 @@
 class CommentsController < ApplicationController
   before_action :cube_authentication
   def create
-    @comment = Comment.new(body: comment_body[:body], meetup_id: params[:meetup_id])
-    @comment.user = current_user
-    if @comment.save
-      redirect_to meetups_path
+    if request.xhr?
+      @comment = Comment.new(body: params[:body], meetup_id: params[:meetup_id])
+      @comment.user = current_user
+      meetupId = @comment.meetup.id
+      if @comment.save
+        respond_to do |format|
+          format.html { render @comment }
+        end
+      else
+        flash[:errors] = "Error!"
+        redirect_to meetups_path
+      end
     else
-      redirect_to :back
+      @comment = Comment.new(body: comment_body[:body], meetup_id: params[:meetup_id])
+      @comment.user = current_user
+      if @comment.save
+        redirect_to meetups_path
+      else
+        redirect_to :back
+      end
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to meetups_path
+    commentId = @comment.id
+    if @comment.destroy
+      respond_to do |format|
+        format.html { render json: commentId}
+      end
+    end
   end
 
   private

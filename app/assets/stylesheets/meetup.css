@@ -1,44 +1,142 @@
-/*.meetup {
-  overflow:hidden;
+#f2Container {
+  height: 100%;
+}
+
+/*.pac-container {
+  position: inherit;
+  -webkit-transform: skew(-30deg,0deg) scale(1.0,0.864);
+  -moz-transform: skew(-30deg,0deg) scale(1.0,0.864);
 }*/
+
+/*THIS BREAKS EVERYTHING
+/*html {
+  overflow-x: hidden;
+}*/
+
+.cubeButton {
+  width: 100%;
+  margin-bottom: 0;
+}
 
 .face .cubeInput {
   margin:0px;
   resize: none;
 }
 
+
+
+.thaCover {
+  background-color: #32DBD3;
+  height: 198px;
+  width: 198px;
+}
+
+#f3Cover {
+  background-color: #3287DA;
+}
+
+.thaCover h3 {
+  position:relative;
+  top: 50%;
+	transform: translateY(-50%);
+}
+
+.attending hr {
+  margin-top: 5px;
+}
+
+#f2Cover {
+  background-color:#C61EEA;
+}
+
+#f1Cover {
+  background-color: #F4FA11;
+}
+
+.map {
+  height:100px;
+  width:200px;
+  z-index: 0;
+}
+
+.lefty p {
+  margin: 0px;
+}
+
 .lefty {
+  padding-top:20px;
   background-color: white;;
   margin-left: 4%;
   margin-right: -250px;
   padding-right: -250px;
   margin-bottom: 10px;
+  width: 42%;
+  border-right: solid;
+  border-top-left-radius: 5px;
+  box-shadow: 10px 10px 5px #444444;
+  background-color: rgb(244, 244, 244);
+}
+
+.lefty * {
+  margin-bottom: 5%;
 }
 
 .righty {
+  padding-top:20px;
+  padding-right: 2px;
   background-color: white;
   margin-right: 4%;
   margin-bottom: 10px;
   margin-left: 4%;
+  border-top-right-radius: 5px;
+  box-shadow: 10px 10px 5px #444444;
+  background-color: rgb(244, 244, 244);
 }
 
-.desc ul{
+.meetup {
+  margin-bottom: 1%;
+}
+
+.attending ul {
+  margin-bottom: 0;
+}
+
+.desc ul {
   list-style-type: none;
 }
 
 @media only screen and (max-width: 320px) {
 
    body { font-size: 12pt; width:100%; overflow-x: hidden; }
-   .meetup div { height: 200px; }
-   html { width:100%; overflow-x: hidden; }
+   html { width:100%; overflow-x: hidden; height: 100% }
+   .face {
+       position:absolute;
+       width:100px;
+       height:100px;
+       border:1px solid white;
+       overflow: hidden;
+   }
 }
 
 .meetup .righty,.lefty {
   height: 300px;
 }
 
+.meetupDesc {
+  border: inset;
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+
 .meetup .desc {
   overflow:auto;
+}
+
+.title {
+  margin-top: 75px;
+  margin-bottom:25px;
+  font-family: Courier;
+  font-size: 60pt;
 }
 
 body h1 {
@@ -46,33 +144,63 @@ body h1 {
 }
 
 .commentColor1 {
-  background-color: white;
-  border-style: outset;
-  border-width: 5px;
-  border-color: #32DBD3;
+  padding: 10px;
+  background-color: #B2D4D4;
   word-wrap: break-word;
   font-size: 5px;
+  border: outset;
+  color: black;
+}
+
+.commentColor1 a {
+  color: black;
+}
+
+.attendee {
+  display: inline;
+}
+
+
+.commentText {
+  font-size: 12px;
 }
 
 .commentColor2 {
-  background-color: white;
-  border-style: inset;
-  border-width: 5px;
-  border-color: #D9FF00;
+  padding: 10px;
+  background-color: #CDEEEE;
   font-size: 5px;
+  word-wrap: break-word;
+  border: outset;
+  color: black;
 }
+
+.commentColor2 p {
+  color: black;
+}
+
+.textureBorder {
+  border: inset;
+  resize: none;
+}
+
+.commentText {
+  color: grey
+}
+
+/*#map {
+  height:100px;
+  width:386px;
+}*/
 
 .meetup .commentForm {
   height:50px;
   margin-bottom: 50px;
 }
 
-.commentHeader {
-
-}
 
 .commentDelete {
   background-color: #a0d3e8;
+  text-decoration: none;
 }
 
 
@@ -84,7 +212,8 @@ body h1 {
   padding:0;
   width:100%;
   height:70%;
-  background-color: #D9FF00;
+  background-color: rgb(221, 216, 216);
+  /*background-image: url(Boston_skyline_at_earlymorning.jpg);*/
   border-bottom: solid;
   border-width: 10px;
   border-color: #142952;
@@ -109,6 +238,8 @@ body h1 {
     font-size:8px;
     margin:3px;
 }
+
+
 
 .cover:hover, .box:hover {
 	 cursor:pointer;
@@ -175,7 +306,7 @@ body h1 {
 body {
   width:100%;
   overflow-x: hidden;
-  background-color: #32DBD3;
+  background-color: #3287DA;
 }
 
 .face a {
@@ -195,6 +326,10 @@ body {
 }
 
 .joinLink {
-  margin-bottom: 1px;
+  margin-bottom: 13px;
   height:20px;
+}
+
+.joinLink .button {
+  display: inline;
 }

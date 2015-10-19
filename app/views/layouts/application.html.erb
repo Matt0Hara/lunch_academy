@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LunchAcademy</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4SEBQAdmSFt5GChB5g9VVlvA2_BycfDc&libraries=places&callback=initialize"></script>
   <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+
   <%= csrf_meta_tag %>
   <% if flash[:errors] == "You need to sign in to do that!" %>
     <script>
       window.onload = function(){
         $("#f2").zoomTo();
+        $("#f2").children(".thaCover").hide()
       }
     </script>
 
   <% end %>
 </head>
 <body data-no-turbolink="true">
-
+  <title>LunchAcademy</title>
   <%- unless flash[:errors] == "You need to sign in to do that!" -%>
     <%- flash.each do |key, value| -%>
       <div class="flash flash-<%= key %>">
@@ -28,20 +30,34 @@
     <div id="cubeContainer">
       <div id="cube">
         <div class="face" id="f1">
+          <div class="thaCover" id="f1Cover" class="text-center">
+            <h3 class="text-center">Create</h3>
+          </div>
+          <div id="text-center">
+
           <%= form_for :new, url: meetups_path  do |f| %>
             <%= f.text_field :title, placeholder:"Title", class: "cubeInput" %>
-            <%= f.text_area :description, placeholder:"Description", class: "cubeInput" %>
-            <%= f.text_field :datetime, placeholder:"Time", class: "cubeInput" %>
-            <%= f.submit %>
+            <%= f.text_area :description, placeholder:"Description",
+                class: "cubeInput" %>
+            <%= f.text_field :datetime, placeholder:"Time",
+                class: "cubeInput" %>
+                <%= f.text_field :address, placeholder: "Add a location", autocomplete: "off", class: "cubeInput" %>
+            <%= f.submit class:"button tiny cubeButton" %>
           <% end %>
         </div>
+        </div>
 		    <div class="face" id="f2">
+          <div class="thaCover text-center" id="f2Cover">
+            <h3 class="text-center">User</h3>
+          </div>
+          <div id="f2Container">
+          <div class="text-center"><%= link_to "Home", meetups_path%></div>
           <% if current_user %>
             <div class="text-center">
               <h5><%= current_user.email %></h5>
               <%= link_to "Sign Out", destroy_user_session_path,
                   method: :delete, class: "signOutButton", class: "f2Link" %><br>
-              <%= link_to "Edit Account", class: "f2Link" %>
+              <%= link_to "Edit Account", edit_user_registration_path, class: "f2Link" %>
             </div>
           <% else %>
           <%= render partial: "devise/sessions/new" %>
@@ -49,16 +65,22 @@
             <div class="signInFlash text-center"> <%= flash[:errors] %> </div>
           <% end %>
           <% end %>
+        </div>
 	      </div>
 		    <div class="face" id="f3">
+          <div class="thaCover text-center" id="f3Cover">
+            <h3 class="text-center">Search</h3>
+          </div>
           <label for="search"><h5>Search</h5></label>
-          <input type="text" name="search" class="cubeInput"></input>
-          <input type="submit"></input>
+          <%= form_tag(meetups_path, :method => "get", class: "cubeInput") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Find a meetup...", class: "cubeInput" %>
+            <%= submit_tag "Search", class: "button tiny cubeButton" %>
+          <% end %>
         </div>
 	    </div>
 		</div>
 
-    <div class="text-center"><%= link_to "Home", meetups_path%></div>
+
 
 
 <div class="container">
