@@ -1,11 +1,9 @@
 class LocationsController < ApplicationController
-
   def create
     if request.xhr?
-      binding.pry
       address = params[:location][:address]
       @location = Location.new(address: address)
-      unless @location.is_existing?
+      unless @location.existing?
         # coordinates = Geocoder.coordinates(@location.address)
         # @location.latitude = coordinates[0]
         # @location.longitude = coordinates[1]

@@ -3,7 +3,8 @@ class MeetupsController < ApplicationController
   before_action :cube_authentication, only: [:create, :new]
   def index
     if params[:search]
-      @meetups = Meetup.where("title = ?", params[:search]).page(params[:page]).per(10)
+      @meetups = Meetup.where("title = ?",
+                              params[:search]).page(params[:page]).per(10)
     else
       @meetups = Meetup.order(created_at: :desc).page(params[:page]).per(10)
     end
@@ -13,7 +14,6 @@ class MeetupsController < ApplicationController
         @addresses << meetup.location.address
       end
     end
-
   end
 
   def show
@@ -45,10 +45,6 @@ class MeetupsController < ApplicationController
       flash[:errors] = @meetup.errors.full_messages.join(". ")
       redirect_to meetups_path
     end
-  end
-
-  def update
-    binding.pry
   end
 
   private

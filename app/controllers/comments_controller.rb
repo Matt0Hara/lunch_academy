@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   before_action :cube_authentication
   def create
     if request.xhr?
-      @comment = Comment.new(body: params[:body], meetup_id: params[:meetup_id])
+      @comment = Comment.new(body: params[:body],
+                 meetup_id: params[:meetup_id])
       @comment.user = current_user
-      meetupId = @comment.meetup.id
       if @comment.save
         respond_to do |format|
           format.html { render @comment }
@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
         redirect_to meetups_path
       end
     else
-      @comment = Comment.new(body: comment_body[:body], meetup_id: params[:meetup_id])
+      @comment = Comment.new(body: comment_body[:body],
+                 meetup_id: params[:meetup_id])
       @comment.user = current_user
       if @comment.save
         redirect_to meetups_path
@@ -29,7 +30,7 @@ class CommentsController < ApplicationController
     commentId = @comment.id
     if @comment.destroy
       respond_to do |format|
-        format.html { render json: commentId}
+        format.html { render json: commentId }
       end
     end
   end
