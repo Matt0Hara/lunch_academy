@@ -1,4 +1,5 @@
-  <li  id="comment<%= comment.id %>" <%= comment.id%2==0 ? "class=commentColor1" : "class=commentColor2" %>>
+  <li  id="comment<%= comment.id %>"
+     <%= comment.id%2==0 ? "class=commentColor1" : "class=commentColor2" %>>
   <% if comment.user == current_user %>
     <a class="commentDelete" id="commentDelete"
        href="<%= meetup_comment_path(meetup_id: comment.meetup_id,

@@ -5,12 +5,16 @@
     <p>Time: <%= meetup.datetime %></p>
     <div class="joinLink">
       <% if meetup.user == current_user %>
-        <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete, class: "button tiny" %>
+        <%= button_to "Delete Meetup", meetup_path(meetup), method: :delete,
+            class: "button tiny" %>
       <% else %>
-        <% if Attendee.find_by(meetup_id: meetup.id, user_id: current_user).nil? %>
-          <%= button_to "Join Meetup!", meetup_attendees_path(meetup), class:"button tiny", method: :post %>
+        <% if Attendee.find_by(meetup_id: meetup.id,
+           user_id: current_user).nil? %>
+          <%= button_to "Join Meetup!", meetup_attendees_path(meetup),
+              class:"button tiny", method: :post %>
         <% else %>
-          <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup), class:"button tiny", method: :delete %>
+          <%= button_to "Leave Meetup", meetup_attendee_path(meetup.id, meetup),
+              class:"button tiny", method: :delete %>
         <% end %>
       <% end %>
     </div>
@@ -46,8 +50,11 @@
     <br>
     <hr>
     <div class="commentForm">
-      <%= form_for :comment, id: "form", url: meetup_comments_path(meetup_id: meetup.id), autocomplete: false do |f| %>
-        <%= f.text_area :body, placeholder: "Have something to say?", class: "textureBorder" %>
+      <%= form_for :comment, id: "form",
+          url: meetup_comments_path(meetup_id: meetup.id),
+          autocomplete: false do |f| %>
+        <%= f.text_area :body, placeholder: "Have something to say?",
+            class: "textureBorder", id: "commentField" %>
         <%= f.submit "Comment", class:"button tiny commentButton" %>
       <% end %>
     </div>

@@ -1,6 +1,7 @@
 <div class="locationData">
   <h6>Address: </h6><p><%= location.address %></p>
   <%= form_for :location, url: meetup_path(meetup_id) do |f|%>
-    <%= f.text_field :address, placeholder: "Add a location", autocomplete: "off", method: "PUT" %>
+    <%= f.text_field :address, placeholder: "Add a location",
+        autocomplete: "off", method: "PUT" %>
   <% end %>
 </div>

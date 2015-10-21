@@ -3,7 +3,8 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4SEBQAdmSFt5GChB5g9VVlvA2_BycfDc&libraries=places&callback=initialize"></script>
-  <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, height=device-height,
+        maximum-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
   <%= csrf_meta_tag %>
@@ -41,7 +42,8 @@
                 class: "cubeInput" %>
             <%= f.text_field :datetime, placeholder:"Time",
                 class: "cubeInput" %>
-                <%= f.text_field :address, placeholder: "Add a location", autocomplete: "off", class: "cubeInput" %>
+                <%= f.text_field :address, placeholder: "Add a location",
+                    autocomplete: "off", class: "cubeInput" %>
             <%= f.submit class:"button tiny cubeButton" %>
           <% end %>
         </div>
@@ -57,7 +59,8 @@
               <h5><%= current_user.email %></h5>
               <%= link_to "Sign Out", destroy_user_session_path,
                   method: :delete, class: "signOutButton", class: "f2Link" %><br>
-              <%= link_to "Edit Account", edit_user_registration_path, class: "f2Link" %>
+              <%= link_to "Edit Account", edit_user_registration_path,
+                  class: "f2Link" %>
             </div>
           <% else %>
           <%= render partial: "devise/sessions/new" %>
@@ -73,7 +76,8 @@
           </div>
           <label for="search"><h5>Search</h5></label>
           <%= form_tag(meetups_path, :method => "get", class: "cubeInput") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Find a meetup...", class: "cubeInput" %>
+            <%= text_field_tag :search, params[:search],
+                placeholder: "Find a meetup...", class: "cubeInput" %>
             <%= submit_tag "Search", class: "button tiny cubeButton" %>
           <% end %>
         </div>
