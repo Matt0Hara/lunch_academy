@@ -12,7 +12,7 @@ feature "user posts a comment", %{
     fill_in "Password", with: poster.password
     click_button "Sign in"
     desc = "Food getting! We are getting food! Come with us to the place
-            that sells the food!"
+    that sells the food!"
     fill_in "Title", with: "Food"
     fill_in "Description", with: desc
     fill_in "Time", with: "1:00"
@@ -23,10 +23,9 @@ feature "user posts a comment", %{
     expect(page).to have_content("Can't wait!")
   end
 
-#   Some sort of Capybara quirk causing this to fail. Possibly to do with second AJAX
+#   Some sort of Capybara quirk causing this to fail. Possibly to do with
+#   second AJAX
 #   event listenter not being applied.
-
-
 #   scenario "owner of a comment deletes it", js: true do
 #     poster = FactoryGirl.create(:user)
 #     post = FactoryGirl.create(:meetup)
@@ -49,4 +48,4 @@ feature "user posts a comment", %{
 #     click_link("commentDelete")
 #     expect(page).to_not have_content(txt)
 #   end
- end
+end
