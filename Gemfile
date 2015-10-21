@@ -5,18 +5,19 @@ ruby '2.1.5'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'geocoder'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+gem 'textacular', '~> 3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'selenium-webdriver', group: [:development, :test]
 gem 'kaminari'
 gem 'poltergeist'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

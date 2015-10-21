@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("nav.pagination").hide();
   var page = 2;
   $(window).scroll(function() {
+    // var lastDivPos = $(".meetup").last().position()["top"] - $(".meetup").last().height()
     var ratio = $(document).height()/$(document).width();
     var pageHeight = 0
     if (ratio > 1) {
@@ -17,6 +18,7 @@ $(document).ready(function() {
       page++;
     }
   });
+
 
 
   $.zoomooz.setup({nativeanimation:true, debug:false});
@@ -39,13 +41,14 @@ $(document).ready(function() {
       evt.stopPropagation();
       // $(".cover").hide();
       $(this).zoomTo();
+      $(this).children(".thaCover").hide()
     }
   });
 
   $(window).click(function(evt) {
     evt.stopPropagation();
     $("body").zoomTo({targetsize:1.0});
-    // $(".cover").show();
+    $(".thaCover").show();
   });
 
   // for iPhone
@@ -58,5 +61,5 @@ $(document).ready(function() {
   // });
 
   $("body").zoomTo({targetsize:1.0});
-  // $(".cover").show();
+  // $(".thaCover").show();
 });
