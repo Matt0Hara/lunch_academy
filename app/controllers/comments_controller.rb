@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
       @comment.user = current_user
       if @comment.save
         respond_to do |format|
+          binding.pry
           format.html { render @comment }
         end
       else

@@ -11,6 +11,7 @@ $(document).ready(function() {
       datatype: "JSON",
       data: { meetup_id: meetup_id, body: body },
       success: function(data) {
+        debugger;
       $("#" + meetup_id + " .comments").prepend(data);
 
       var thing = $("#" + meetup_id + " .comments").children().first();
