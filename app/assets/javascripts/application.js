@@ -13,7 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
+//= require_directory .
 //= require jquery.zoomooz
 
 $(function(){ $(document).foundation(); });
+function setCovers() {
+  $("#f1").scrollTop(0);
+  $("#f2").scrollTop(0);
+  $("#f3").scrollTop(0);
+}

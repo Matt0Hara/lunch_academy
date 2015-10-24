@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4SEBQAdmSFt5GChB5g9VVlvA2_BycfDc&libraries=places&callback=initialize"></script>
   <meta name="viewport" content="width=device-width, height=device-height,
         maximum-scale=1.0" />
+  <% if current_user %>
+    <%= javascript_include_tag "signedIn/addComment" %>
+    <%= javascript_include_tag "signedIn/deleteComment" %>
+  <% end %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
   <%= csrf_meta_tag %>
