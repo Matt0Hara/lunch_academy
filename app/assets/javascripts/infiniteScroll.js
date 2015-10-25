@@ -23,17 +23,7 @@ $(document).ready(function() {
 
   $.zoomooz.setup({nativeanimation:true, debug:false});
 
-  //   $(".cover").click(function(evt) {
-  //   evt.stopPropagation();
-  //   this.fadeTo()
-  // });
-
-  // $(".box").click(function(evt) {
-  //   evt.stopPropagation();
-  //   $(this).zoomTo({targetsize:0.7});
-  // });
-
-
+////////////////////////////
 
   $(".face").click(function(evt) {
     if(evt.toElement.className != "f2Link") {
