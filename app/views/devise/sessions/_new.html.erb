@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.email_field :email, placeholder:"Email", autofocus: true, class: "cubeInput" %>
+    <%= f.email_field :email, placeholder:"Email", autofocus: false, class: "cubeInput" %>
     <%= f.password_field :password, placeholder: "Password", class: "cubeInput" %>
     <%= f.submit "Sign in", class: "button tiny cubeButton"%><br/>
   <% if devise_mapping.rememberable? -%>
