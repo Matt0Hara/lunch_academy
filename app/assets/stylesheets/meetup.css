@@ -82,7 +82,7 @@
 }
 
 .righty {
-  padding-top:20px;
+  padding-top:10px;
   padding-right: 2px;
   background-color: white;
   margin-right: 4%;
@@ -124,7 +124,7 @@
 
 .meetupDesc {
   border: inset;
-  margin-top: 10px;
+  margin-top: 5px;
   word-wrap: break-word;
 }
 
